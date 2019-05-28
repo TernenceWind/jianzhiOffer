@@ -1,7 +1,7 @@
 # coding = utf-8
 # 数组中的重复数字
 
-a = [2,3,1,0,2,5,3]
+a = [2,3,1,0,6,5,4]
 for i in range(len(a)):
     if a[i] == i:
         continue
