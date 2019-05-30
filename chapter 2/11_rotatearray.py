@@ -2,18 +2,20 @@
 # 旋转数组的最小数字
 
 
-rotateArray = [2,2,2,2,2,3,4,1,2]
-start, end = 0, len(rotateArray)-1
-print(start,end)
-if rotateArray[start]<rotateArray[end]:
-    print(rotateArray[0])
-    exit()
-while start < end:
-    mid = (start+end)//2
-    print(start,end,mid)
-    if rotateArray[mid] > rotateArray[start]:
-        start = mid
-    else:
-        end = mid-1
-print(start,end,mid)
-print(rotateArray[start+1])
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        # write code here
+        if len(rotateArray) == 0:
+            return 0
+        start, end = 0, len(rotateArray)-1
+        while rotateArray[start] >= rotateArray[end]:
+            if end - start == 1:
+                return rotateArray[end]
+            mid = (start+end)//2
+            if rotateArray[start] == rotateArray[mid] == rotateArray[end]:
+                return min(rotateArray[start:end+1])
+            if rotateArray[mid] >= rotateArray[start]:
+                start = mid
+            if rotateArray[mid] <= rotateArray[end]:
+                end = mid
+        return rotateArray[end]
